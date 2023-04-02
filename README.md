@@ -6,11 +6,8 @@ of the license in the [LICENSE.md](LICENSE.md) file. 🖤
 ### Todo
 
 - [x] Setup the repo & the project.
-- [ ] Play with basic rendering & shapes.
-
-A bit far fetched but,
-
-- [ ] Write convey's game of life!
+- [x] Play with basic rendering & shapes.
+- [x] Write convey's game of life! My first cellular automaton that is also turing complete! : )
 
 ### Develop
 
