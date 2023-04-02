@@ -8,6 +8,8 @@ of the license in the [LICENSE.md](LICENSE.md) file. 🖤
 - [x] Setup the repo & the project.
 - [x] Play with basic rendering & shapes.
 - [x] Write convey's game of life! My first cellular automaton that is also turing complete! : )
+- [ ] Let the user choose the initial state of the game of life.
+- [ ] Add mobile support.
 
 ### Develop
 
@@ -20,8 +22,10 @@ of the license in the [LICENSE.md](LICENSE.md) file. 🖤
 
 ### Commands
 
-| Command      | Description                       |
-| ------------ | --------------------------------- |
-| `pnpm dev`   | Start parcel's development server |
-| `pnpm build` | Build the project                 |
-| `pnpm serve` | Serve the build directory         |
+| Command          | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| `pnpm dev`       | Start parcel's development server                          |
+| `pnpm build`     | Build the project                                          |
+| `pnpm serve`     | Serve the build directory                                  |
+| `pnpm clean`     | Clean the build directory                                  |
+| `pnpm clean:all` | Clean the build directory, node_modules, and parcle cache. |

@@ -2,12 +2,13 @@ import p5 from 'p5';
 import { Grid } from './cgol/Grid';
 
 
-
+// You can actually play with these values.
 export let cell_size = 50; // The size of a cell in the grid; large size = less cells in the grid
 export let initial_population_rate = 0.1; // 0.95 = 95% of the cells are alive
 
 
 /**
+ * Don't touch these values or I'll cast a spell on you.
  * @internal
  */
 let alive = 0;
@@ -85,6 +86,5 @@ let init = function (p: p5) {
             grid.randomize();
         }
     };
-}
-
+};
 new p5(init, window.document.getElementById('canvas')!);

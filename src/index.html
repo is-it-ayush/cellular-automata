@@ -2,19 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>p5 playground | .ayush</title>
+    <title>Game Of Life | .ayush</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script script type="module" src="../src/main.ts"></script>
-    <link href="../dist/base.css" rel="stylesheet" />
+    <link href="./index.css" rel="stylesheet" />
   </head>
   <body>
     <main>
       <div
         class="flex flex-col absolute z-10 text-white p-5 w-[400px] space-y-4"
       >
-        <div class="flex flex-col space-y-2 px-3 py-2">
+        <div
+          class="flex flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
+        >
           <div class="flex flex-row">
             <span class="text-gray-300 text-4xl"> Cellular Automata </span>
           </div>
@@ -22,10 +24,12 @@
             I've always been intrested in cellular automata and this is my first
             attempt at implementing one. I've used p5.js for the visualization
             and typescript for the logic. Conway's Game Of Life is a turing
-            complete cellular automata ^_^
+            complete cellular automata. ^_^
           </p>
         </div>
-        <div class="flex flex-col space-y-2 px-3 py-2">
+        <div
+          class="flex flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
+        >
           <div class="flex flex-row">
             <span class="text-gray-300 text-2xl">How To Play</span>
           </div>
@@ -35,7 +39,9 @@
             world & press Q to randomly populate the world.
           </p>
         </div>
-        <div class="flex flex-col space-y-2 px-3 py-2">
+        <div
+          class="flex flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
+        >
           <div class="flex flex-row">
             <span class="text-gray-300 text-2xl">State</span>
           </div>
