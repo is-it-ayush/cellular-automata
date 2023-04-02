@@ -14,11 +14,9 @@
       <div
         class="flex flex-col absolute z-10 text-white p-5 w-[400px] space-y-4"
       >
-        <div
-          class="flex flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
-        >
+        <div class="flex flex-col space-y-2 px-3 py-3 rounded-[5px]">
           <div class="flex flex-row">
-            <span class="text-gray-300 text-4xl"> Cellular Automata </span>
+            <span class="text-gray-300 text-4xl">Cellular Automata</span>
           </div>
           <p class="text-gray-300 text-sm mt-2 font-light">
             I've always been intrested in cellular automata and this is my first
@@ -27,28 +25,52 @@
             complete cellular automata. ^_^
           </p>
         </div>
-        <div
-          class="flex flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
-        >
+        <div class="flex flex-col space-y-2 px-3 py-3 rounded-[5px]">
           <div class="flex flex-row">
-            <span class="text-gray-300 text-2xl">How To Play</span>
+            <span class="text-gray-300 text-2xl">Controls</span>
           </div>
           <p class="text-gray-300 text-sm mt-2 font-light">
-            Press Spacebar to halt the time. Touch/Click to draw cells. Press
+            <!-- Press Spacebar to halt the time. Touch/Click to draw cells. Press
             Spacebar again make the time flow. You can also press R to reset the
-            world & press Q to randomly populate the world.
+            world & press Q to randomly populate the world. -->
+            You can interact with the world by clicking/touching on the cells.
+            Some shortcuts are:
+            <ul class="list-disc font-light text-gray-300">
+              <li>Spacebar to halt the time</li>
+              <li>R to reset the world</li>
+              <li>Q to randomly populate the world</li>
+            </ul>
           </p>
         </div>
-        <div
-          class="flex flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
-        >
+        <div class="flex flex-col space-y-2 px-3 py-3 rounded-[5px]">
           <div class="flex flex-row">
             <span class="text-gray-300 text-2xl">State</span>
           </div>
-          <div class="text-gray-300 text-sm mt-2">
-            <p>Alive: <span id="alive-cells"></span></p>
-            <p><span id="is-paused"></span></p>
+          <div class="text-gray-300 text-sm mt-2 w-full">
+            <p class="flex w-full justify-between">
+              Alive <span id="alive-cells" class="font-semibold"></span>
+            </p>
           </div>
+        </div>
+        <div class="flex flex-col justify-between space-y-2">
+          <button
+            class="flex cursor-pointer flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
+            id="randomize-button"
+          >
+            Randomize World
+          </button>
+          <button
+            class="flex cursor-pointer flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
+            id="control-time"
+          >
+          Pause
+          </button>
+          <button
+            class="flex cursor-pointer flex-col space-y-2 px-3 py-3 hover:bg-white/5 transition-200 rounded-[5px]"
+            id="reset-grid"
+          >
+            Reset World
+          </button>
         </div>
       </div>
       <div

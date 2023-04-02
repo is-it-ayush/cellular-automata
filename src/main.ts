@@ -3,7 +3,7 @@ import { Grid } from './cgol/Grid';
 
 
 // You can actually play with these values.
-export let cell_size = 50; // The size of a cell in the grid; large size = less cells in the grid
+export let cell_size = 30; // The size of a cell in the grid; large size = less cells in the grid
 export let initial_population_rate = 0.1; // 0.95 = 95% of the cells are alive
 
 
@@ -14,8 +14,12 @@ export let initial_population_rate = 0.1; // 0.95 = 95% of the cells are alive
 let alive = 0;
 export let grid: Grid;
 let isPaused = false;
+
+// DOM nodes
 let aliveNode = document.getElementById('alive-cells');
-let isPausedNode = document.getElementById('is-paused');
+let randomize_button = document.getElementById('randomize-button');
+let control_time_button = document.getElementById('control-time');
+let reset_button = document.getElementById('reset-grid');
 
 
 function draw(p: p5) {
@@ -39,15 +43,9 @@ function draw(p: p5) {
     }
 
     // update the dom nodes
-    if (aliveNode && isPausedNode) {
+    if (aliveNode) {
         if (aliveNode.innerText != `${alive}`) {
             aliveNode.innerText = `${alive}`;
-        }
-        if (isPaused) {
-            isPausedNode.innerText = `Time halts.`;
-        }
-        else {
-            isPausedNode.innerText = `Time flows.`;
         }
     }
 
@@ -66,6 +64,27 @@ function setup(p: p5) {
     p.background(255);
     grid = new Grid(width, height);
     grid.randomize();
+
+    // add event listeners to the dom nodes
+    if (randomize_button) {
+        randomize_button.addEventListener('click', () => {
+            console.log(`Grid: Randomizing the grid with a population rate of ${initial_population_rate}%...`);
+            grid.randomize();
+        });
+    }
+    if (control_time_button) {
+        control_time_button.addEventListener('click', () => {
+            console.log(`Grid: The grid is now ${isPaused ? 'unpaused' : 'paused'}.`);
+            isPaused = !isPaused;
+            control_time_button!.innerText = isPaused ? 'Unpause' : 'Pause';
+        });
+    }
+    if (reset_button) {
+        reset_button.addEventListener('click', () => {
+            console.log(`Grid: Resetting the grid...`);
+            grid.cells.forEach(c => c.isAlive = false);
+        });
+    }
 }
 
 let init = function (p: p5) {

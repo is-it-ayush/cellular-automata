@@ -8,8 +8,8 @@ of the license in the [LICENSE.md](LICENSE.md) file. 🖤
 - [x] Setup the repo & the project.
 - [x] Play with basic rendering & shapes.
 - [x] Write convey's game of life! My first cellular automaton that is also turing complete! : )
+- [x] Add mobile support.
 - [ ] Let the user choose the initial state of the game of life.
-- [ ] Add mobile support.
 
 ### Develop
 
