@@ -3,7 +3,7 @@ import { Grid } from './cgol/Grid';
 
 
 // You can actually play with these values.
-export let cell_size = 30; // The size of a cell in the grid; large size = less cells in the grid
+export let cell_size = 20; // The size of a cell in the grid; large size = less cells in the grid
 export let initial_population_rate = 0.1; // 0.95 = 95% of the cells are alive
 
 
@@ -13,17 +13,29 @@ export let initial_population_rate = 0.1; // 0.95 = 95% of the cells are alive
  */
 let alive = 0;
 export let grid: Grid;
-let isPaused = false;
+export let isPaused = false;
+export let color_scheme = { // assume light mode;
+    alive: 0,
+    dead: 255
+}
+
+
 
 // DOM nodes
 let aliveNode = document.getElementById('alive-cells');
 let randomize_button = document.getElementById('randomize-button');
 let control_time_button = document.getElementById('control-time');
 let reset_button = document.getElementById('reset-grid');
+let toggle_theme_button = document.getElementById('toggle-theme');
 
+function pause() {
+    console.log(`Grid: The grid is now ${isPaused ? 'unpaused' : 'paused'}.`);
+    control_time_button!.innerText = isPaused ? 'Unpause' : 'Pause';
+    console.log(control_time_button);
+    isPaused = !isPaused;
+}
 
 function draw(p: p5) {
-    p.resizeCanvas(p.windowWidth, p.windowHeight);
 
     // controlling the grid with the mouse
     if (p.mouseIsPressed) {
@@ -31,7 +43,7 @@ function draw(p: p5) {
         let x = Math.floor(p.mouseX / cell_size) * cell_size;
         let y = Math.floor(p.mouseY / cell_size) * cell_size;
 
-        let cell = grid.cells.find(c => c.x == x && c.y == y);
+        let cell = grid.cells.get(`${x},${y}`);
         if (cell) {
             if (p.mouseButton == p.LEFT) {
                 cell.isAlive = true;
@@ -61,28 +73,27 @@ function setup(p: p5) {
     const width = p.windowWidth;
     const height = p.windowHeight;
     p.createCanvas(width * 1, height);
-    p.background(255);
+
     grid = new Grid(width, height);
     grid.randomize();
 
     // add event listeners to the dom nodes
-    if (randomize_button) {
+    if (randomize_button && control_time_button && reset_button && toggle_theme_button) {
+
         randomize_button.addEventListener('click', () => {
-            console.log(`Grid: Randomizing the grid with a population rate of ${initial_population_rate}%...`);
             grid.randomize();
         });
-    }
-    if (control_time_button) {
+
         control_time_button.addEventListener('click', () => {
-            console.log(`Grid: The grid is now ${isPaused ? 'unpaused' : 'paused'}.`);
-            isPaused = !isPaused;
-            control_time_button!.innerText = isPaused ? 'Unpause' : 'Pause';
+            pause()
         });
-    }
-    if (reset_button) {
+
         reset_button.addEventListener('click', () => {
-            console.log(`Grid: Resetting the grid...`);
-            grid.cells.forEach(c => c.isAlive = false);
+            grid.reset();
+        });
+
+        toggle_theme_button.addEventListener('click', () => {
+            switchTheme();
         });
     }
 }
@@ -93,17 +104,40 @@ let init = function (p: p5) {
     p.keyTyped = (event: KeyboardEvent) => {
         event.preventDefault();
         if (event.key == 'r') {
-            console.log(`Grid: Resetting the grid...`);
-            grid.cells.forEach(c => c.isAlive = false);
+            grid.reset();
         }
         else if (event.key == " ") {
-            console.log(`Grid: The grid is now ${isPaused ? 'unpaused' : 'paused'}.`);
-            isPaused = !isPaused;
+            pause()
         }
         else if (event.key == 'q') {
-            console.log(`Grid: Randomizing the grid with a population rate of ${initial_population_rate}%...`);
             grid.randomize();
         }
     };
+
+    p.windowResized = () => {
+        p.resizeCanvas(p.windowWidth, p.windowHeight);
+    }
 };
-new p5(init, window.document.getElementById('canvas')!);
+
+function switchTheme() {
+    if (!document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.add('dark');
+        color_scheme = {
+            alive: 255,
+            dead: 0
+        }
+    }
+    else {
+        document.documentElement.classList.remove('dark');
+        color_scheme = {
+            alive: 0,
+            dead: 255
+        }
+    }
+}
+
+function main() {
+    new p5(init, document.getElementById('canvas')!);
+}
+
+main()

@@ -1,5 +1,5 @@
 import type p5 from "p5";
-import { cell_size, grid } from "../main";
+import { cell_size, color_scheme, grid } from "../main";
 
 /**
  * A cell in the grid.
@@ -17,7 +17,7 @@ export class Cell {
 
     draw(p: p5) {
         p.rect(this.x, this.y, cell_size, cell_size);
-        p.fill(this.isAlive ? 255 : 0);
+        p.fill(this.isAlive ? color_scheme.alive : color_scheme.dead);
     }
 
     /**
@@ -32,7 +32,7 @@ export class Cell {
                 if (x == this.x && y == this.y) {
                     continue;
                 }
-                let cell = grid.cells.find(c => c.x == x && c.y == y);
+                let cell = grid.cells.get(`${x},${y}`);
                 if (cell) {
                     neighbors.push(cell);
                 }

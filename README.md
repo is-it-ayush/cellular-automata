@@ -9,6 +9,9 @@ of the license in the [LICENSE.md](LICENSE.md) file. 🖤
 - [x] Play with basic rendering & shapes.
 - [x] Write convey's game of life! My first cellular automaton that is also turing complete! : )
 - [x] Add mobile support.
+- [x] Switched from an array to a map for storing the state of the cells.
+- [x] Added light/dark mode.
+- [x] Shift controls to bottom.
 - [ ] Let the user choose the initial state of the game of life.
 
 ### Develop

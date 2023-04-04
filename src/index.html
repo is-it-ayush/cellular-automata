@@ -10,15 +10,15 @@
     <link href="./index.css" rel="stylesheet" />
   </head>
   <body>
-    <main class="bg-black">
+    <main class="bg-white dark:bg-black text-black dark:text-white">
       <div
-        class="flex flex-col absolute z-10 text-white p-5 w-[400px] space-y-4"
+        class="flex flex-col absolute z-10 p-5 w-[400px] space-y-4 transition-opacity duration-500 ease-in-out"
       >
         <div class="flex flex-col space-y-2 px-3 py-3 rounded-[5px]">
           <div class="flex flex-row">
-            <span class="text-gray-300 text-4xl">Cellular Automata</span>
+            <span class="text-4xl">Cellular Automata</span>
           </div>
-          <p class="text-gray-300 text-sm mt-2 font-light">
+          <p class="text-sm mt-2 font-light">
             I've always been intrested in cellular automata and this is my first
             attempt at implementing one. I've used p5.js for the visualization
             and typescript for the logic. Conway's Game Of Life is a turing
@@ -27,15 +27,12 @@
         </div>
         <div class="flex flex-col space-y-2 px-3 py-3 rounded-[5px]">
           <div class="flex flex-row">
-            <span class="text-gray-300 text-2xl">Controls</span>
+            <span class="text-2xl">Controls</span>
           </div>
-          <p class="text-gray-300 text-sm mt-2 font-light">
-            <!-- Press Spacebar to halt the time. Touch/Click to draw cells. Press
-            Spacebar again make the time flow. You can also press R to reset the
-            world & press Q to randomly populate the world. -->
+          <p class="text-sm mt-2 font-light">
             You can interact with the world by clicking/touching on the cells.
             Some shortcuts are:
-            <ul class="list-disc font-light text-gray-300">
+            <ul class="list-disc font-light">
               <li>Spacebar to halt the time</li>
               <li>R to reset the world</li>
               <li>Q to randomly populate the world</li>
@@ -44,9 +41,9 @@
         </div>
         <div class="flex flex-col space-y-2 px-3 py-3 rounded-[5px]">
           <div class="flex flex-row">
-            <span class="text-gray-300 text-2xl">State</span>
+            <span class="text-2xl">State</span>
           </div>
-          <div class="text-gray-300 text-sm mt-2 w-full">
+          <div class="text-sm mt-2 w-full">
             <p class="flex w-full justify-between">
               Alive <span id="alive-cells" class="font-semibold"></span>
             </p>
@@ -74,11 +71,17 @@
         </div>
       </div>
       <div
-        class="flex flex-row absolute z-20 text-sm text-white p-5 w-[400px] bottom-0 font-light"
+        class="flex flex-row absolute z-20 text-sm p-5 w-[400px] bottom-0 font-light"
       >
-        Crafted by
-        <a href="https://isitayush.dev" class="ml-1" target="_blank">Ayush</a>
+        crafted by
+        <a href="https://isitayush.dev" class="ml-1" target="_blank">ayush.</a>
       </div>
+      <button
+      class="flex flex-row absolute z-20 text-sm p-5 bottom-0 right-0 font-light"
+      id="toggle-theme"
+      >
+        .light
+      </button>
       <div id="canvas"></div>
     </main>
   </body>
