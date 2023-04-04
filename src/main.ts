@@ -15,8 +15,8 @@ let alive = 0;
 export let grid: Grid;
 export let isPaused = false;
 export let color_scheme = { // assume light mode;
-    alive: 0,
-    dead: 255
+    alive: 255,
+    dead: 0
 }
 
 
@@ -123,16 +123,18 @@ function switchTheme() {
     if (!document.documentElement.classList.contains('dark')) {
         document.documentElement.classList.add('dark');
         color_scheme = {
-            alive: 255,
-            dead: 0
+            alive: 0,
+            dead: 255
         }
+        toggle_theme_button!.innerText = '.dark';
     }
     else {
         document.documentElement.classList.remove('dark');
         color_scheme = {
-            alive: 0,
-            dead: 255
+            alive: 255,
+            dead: 0
         }
+        toggle_theme_button!.innerText = '.light';
     }
 }
 
